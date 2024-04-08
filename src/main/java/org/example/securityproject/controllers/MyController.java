@@ -32,12 +32,8 @@ public class MyController {
     }
 
     @GetMapping("/user-specific-data")
+    @PreAuthorize("#username == authentication.principal.username")
     public String userSpecificData(@RequestParam String username) {
-        String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        if (username.equals(currentUser)) {
-            return "Data accessible for the authenticated user: " + currentUser;
-        } else {
-            return "Access denied. User does not match.";
-        }
+        return "Data accessible for the authenticated user: " + username;
     }
 }
