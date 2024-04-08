@@ -26,7 +26,16 @@ public class Person implements Serializable {
 
     @Column(name = "city_of_living")
     private String cityOfLiving;
+    @Column(name="permissions")
+    private Enum permissions;
 
+    public void setPermissions(Enum permissions) {
+        this.permissions = permissions;
+    }
+
+    public Enum getPermissions() {
+        return permissions;
+    }
 
     public String getName() {
         return name;
